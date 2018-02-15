@@ -10,18 +10,28 @@
           Category name
         </th>
         <th>
-          Edit
+
         </th>
         <th>
-          Delete
+
         </th>
       </thead>
 
       <tbody>
-        @foreach ($categories as $key)
+        @foreach ($categories as $category)
           <tr>
             <td>
-              {{ $key->name }}
+              {{ $category->name }}
+            </td>
+            <td>
+              <a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-warning">
+                Edit
+              </a>
+            </td>
+            <td>
+              <a href="{{ route('category.delete', ['id' => $category->id]) }}" class="btn btn-danger">
+                Delete
+              </a>
             </td>
           </tr>
         @endforeach
