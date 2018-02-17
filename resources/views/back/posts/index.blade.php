@@ -24,19 +24,19 @@
         @foreach ($posts as $post)
           <tr>
             <td>
-              Image
+                <img src="{{ $post->featured }}" alt="{{ $post->title }}" width="100px" height="50px">
             </td>
             <td>
-              {{ $post->title }}
+                {{ $post->title }}
             </td>
             <td>
               <a href="" class="btn btn-warning">
-                Edit
+                  Edit
               </a>
             </td>
             <td>
               <a href="" class="btn btn-danger">
-                Delete
+                  Delete
               </a>
             </td>
           </tr>
