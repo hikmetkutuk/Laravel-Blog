@@ -112,7 +112,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function trash($id)
     {
         $post = Post::find($id);
         $post->delete();
@@ -125,5 +125,14 @@ class PostsController extends Controller
     {
        $posts = Post::onlyTrashed()->get();
        return view('back.posts.trashed')->with('posts', $posts);
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->forceDelete();
+
+        Session::flash('success', 'Post was deleted');
+        return redirect()->back();
     }
 }
