@@ -69,7 +69,7 @@ class PostsController extends Controller
         ]);
 
         Session::flash('success', 'Succesfully post created');
-        return redirect()->back();
+        return redirect()->route('posts');
     }
 
     /**
@@ -134,5 +134,13 @@ class PostsController extends Controller
 
         Session::flash('success', 'Post was deleted');
         return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+       $post = Post::withTrashed()->where('id', $id)->first();
+       $post->restore();
+       Session::flash('success', 'Succesfully restore post');
+       return redirect()->route('posts');
     }
 }

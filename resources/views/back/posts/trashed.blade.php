@@ -13,9 +13,6 @@
           Title
         </th>
         <th>
-          <!-- edit button -->
-        </th>
-        <th>
           <!-- restore button -->
         </th>
         <th>
@@ -33,12 +30,7 @@
                 {{ $post->title }}
             </td>
             <td>
-              <a href="" class="btn btn-warning">
-                  Edit
-              </a>
-            </td>
-            <td>
-              <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-success">
+              <a href="{{ route('post.restore', ['id' => $post->id]) }}" class="btn btn-success">
                   Restore
               </a>
             </td>
