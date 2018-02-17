@@ -120,4 +120,10 @@ class PostsController extends Controller
         Session::flash('success', 'Post was trashed');
         return redirect()->back();
     }
+
+    public function trashed()
+    {
+       $posts = Post::onlyTrashed()->get();
+       return view('back.posts.trashed')->with('posts', $posts);
+    }
 }

@@ -16,7 +16,10 @@
           <!-- edit button -->
         </th>
         <th>
-          <!-- trash button -->
+          <!-- restore button -->
+        </th>
+        <th>
+          <!-- delete button -->
         </th>
       </thead>
 
@@ -35,8 +38,13 @@
               </a>
             </td>
             <td>
+              <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-success">
+                  Restore
+              </a>
+            </td>
+            <td>
               <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-danger">
-                  Trash
+                  Delete
               </a>
             </td>
           </tr>
