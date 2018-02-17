@@ -64,10 +64,12 @@ class PostsController extends Controller
           'title' => $request->title,
           'content' => $request->content,
           'featured' => 'uploads/posts/'. $featured_new_name,
-          'cat_id' => $request->cat_id
+          'cat_id' => $request->cat_id,
+          'slug' => str_slug($request->slug)
         ]);
 
         Session::flash('success', 'Succesfully post created');
+        return redirect()->back();
     }
 
     /**
