@@ -30,7 +30,7 @@
                 {{ $post->title }}
             </td>
             <td>
-              <a href="" class="btn btn-warning">
+              <a href="{{ route('post.edit', ['id' => $post->id]) }}" class="btn btn-warning">
                   Edit
               </a>
             </td>
