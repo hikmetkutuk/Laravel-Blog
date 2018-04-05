@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use App\Tag;
 use Session;
 
 class PostsController extends Controller
@@ -37,7 +38,8 @@ class PostsController extends Controller
             return redirect()->back();
         }
 
-        return view('back.posts.create')->with('categories', $categories);
+        return view('back.posts.create')->with('categories', $categories)
+                                              ->with('tags', Tag::all());
     }
 
     /**
@@ -53,7 +55,8 @@ class PostsController extends Controller
             'title' => 'required',
             'featured' => 'required|image',
             'content' => 'required',
-            'cat_id' => 'required'
+            'cat_id' => 'required',
+            'tags' => 'required'
         ]);
 
         $featured = $request->featured;
@@ -67,6 +70,8 @@ class PostsController extends Controller
           'cat_id' => $request->cat_id,
           'slug' => str_slug($request->slug)
         ]);
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Succesfully post created');
         return redirect()->route('posts');
