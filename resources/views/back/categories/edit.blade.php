@@ -1,7 +1,3 @@
-/**
- * hikmetis
- */
-
 @extends('layouts.app')
 
 @section('content')
@@ -30,4 +26,4 @@
             </form>
         </div>
     </div>
-    @stop
+@stop

@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: hikmetis
- * Date: 2/10/18
- * Time: 4:00 PM
- */
-?>
-
 @extends('layouts.app')
 
 @section('content')
@@ -35,4 +26,4 @@
             </form>
         </div>
     </div>
-    @stop
+@stop
