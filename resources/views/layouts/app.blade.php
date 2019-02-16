@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -29,8 +31,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Admin Panel
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        <i class="fab fa-drupal"></i> Admin Panel
                     </a>
                 </div>
 
@@ -57,7 +59,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            <i class="fas fa-sign-out-alt"></i> Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -78,39 +80,41 @@
                     <div class="col-lg-4">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="{{ route('home') }}">Home</a>
+                                <a href="{{ route('home') }}">
+                                    <i class="fas fa-home"></i> Home
+                                </a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('user.profile') }}">My profile</a>
+                                <a href="{{ route('user.profile') }}">
+                                    <i class="fas fa-user-circle"></i> My profile
+                                </a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('categories') }}">Categories</a>
+                                <a href="{{ route('categories') }}">
+                                    <i class="fas fa-layer-group"></i> Categories
+                                </a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('tags') }}">Tags</a>
+                                <a href="{{ route('tags') }}">
+                                    <i class="fas fa-tags"></i> Tags
+                                </a>
                             </li>
                             @if(Auth::user()->admin)
                                 <li class="list-group-item">
-                                    <a href="{{ route('users') }}">Users</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="{{ route('user.create') }}">New user</a>
+                                    <a href="{{ route('users') }}">
+                                        <i class="fas fa-users"></i> Users
+                                    </a>
                                 </li>
                             @endif
                             <li class="list-group-item">
-                                <a href="{{ route('posts') }}">Posts</a>
+                                <a href="{{ route('posts') }}">
+                                    <i class="fas fa-file-alt"></i> Posts
+                                </a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('category.create') }}">Create new category</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('tag.create') }}">Create new tag</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('post.create') }}">Create new post</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('post.trashed') }}">Trash</a>
+                                <a href="{{ route('post.trashed') }}">
+                                    <i class="fas fa-trash-alt"></i> Trash
+                                </a>
                             </li>
                         </ul>
                     </div>

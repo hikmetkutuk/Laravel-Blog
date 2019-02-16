@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: hikmetis
- * Date: 23.04.2018
- * Time: 19:00
- */
-?>
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,6 +5,11 @@
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             Users
+            @if(Auth::user()->admin)
+                <a href="{{ route('user.create') }}" style="float: right" class="btn btn-success btn-xs" role="button">
+                    <i class="fas fa-plus"></i> Add
+                </a>
+            @endif
         </div>
         <table class="table table-hover">
 
@@ -44,14 +40,20 @@
                         </td>
                         <td>
                             @if($user->admin)
-                                <a href="{{ route('user.not.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-danger">Make normal user</a>
+                                <a href="{{ route('user.not.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-danger">
+                                    <i class="fas fa-user"></i> Make normal user
+                                </a>
                             @else
-                                <a href="{{ route('user.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-success">Make admin</a>
+                                <a href="{{ route('user.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-success">
+                                    <i class="fas fa-user-shield"></i> Make admin
+                                </a>
                             @endif
                         </td>
                         <td>
                             @if(Auth::id() !== $user->id)
-                                <a href="{{ route('user.delete', ['id' => $user->id]) }}" class="btn btn-xs btn-danger">Delete</a>
+                                <a href="{{ route('user.delete', ['id' => $user->id]) }}" class="btn btn-xs btn-danger">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
                             @endif
                         </td>
                     </tr>

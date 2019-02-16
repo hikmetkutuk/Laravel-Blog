@@ -1,15 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: hikmetis
- * Date: 2/10/18
- * Time: 4:00 PM
- */
-?>
-
 @extends('layouts.app')
 
 @section('content')
+
     @if(count($errors) > 0)
         <ul class="list-group">
             @foreach($errors->all() as $error)
@@ -65,4 +57,4 @@
             </form>
         </div>
     </div>
-    @stop
+@stop

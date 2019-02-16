@@ -8,35 +8,18 @@ use App\Post;
 use App\Tag;
 use Session;
 
-class PostsController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+class PostsController extends Controller {
+    
+    public function index() {
         return view('back.posts.index')->with('posts', Post::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-      /**
-       *
-       * Is there any category?
-       */
+    public function create() {
+      
         $categories = Category::all();
-
         $tags = Tag::all();
 
-        if($categories->count() == 0 || $tags->count() == 0)
-        {
+        if($categories->count() == 0 || $tags->count() == 0) {
             Session::flash('info', 'You must have some categories and tags to create a post');
             return redirect()->back();
         }
@@ -45,14 +28,7 @@ class PostsController extends Controller
                                               ->with('tags', $tags);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //dd($request->all());
         $this->validate($request, [
             'title' => 'required',
@@ -80,40 +56,17 @@ class PostsController extends Controller
         return redirect()->route('posts');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show($id) {
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+    public function edit($id) {
         $post = Post::find($id);
         return view('back.posts.edit')->with('post', $post)
-                                            ->with('categories', Category::all())
-                                            ->with('tags', Tag::all());
+                                      ->with('categories', Category::all())
+                                      ->with('tags', Tag::all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
@@ -122,8 +75,7 @@ class PostsController extends Controller
 
         $post = Post::find($id);
 
-        if ($request->hasFile('featured'))
-        {
+        if ($request->hasFile('featured')) {
             $featured = $request->featured;
             $featured_new_name = time().$featured->getClientOriginalName();
             $featured->move('uploads/posts', $featured_new_name);
@@ -143,14 +95,7 @@ class PostsController extends Controller
         return redirect()->route('posts');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function trash($id)
-    {
+    public function trash($id) {
         $post = Post::find($id);
         $post->delete();
 
@@ -158,14 +103,12 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
-    public function trashed()
-    {
+    public function trashed() {  
        $posts = Post::onlyTrashed()->get();
        return view('back.posts.trashed')->with('posts', $posts);
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $post = Post::withTrashed()->where('id', $id)->first();
         $post->forceDelete();
 
@@ -173,8 +116,7 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
-    public function restore($id)
-    {
+    public function restore($id) {
        $post = Post::withTrashed()->where('id', $id)->first();
        $post->restore();
        Session::flash('success', 'Succesfully restore post');
