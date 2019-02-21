@@ -2,15 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+class UsersTableSeeder extends Seeder {
+
+    public function run() {
           $user = App\User::create([
               'name' => 'Hikmet',
               'email' => 'hikmetkutuk@email.com',
