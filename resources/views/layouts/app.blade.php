@@ -32,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <i class="fab fa-drupal"></i> Admin Panel
+                        <i class="fab fa-laravel"></i> Admin Panel
                     </a>
                 </div>
 
