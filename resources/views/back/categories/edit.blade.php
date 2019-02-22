@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <div class="text-center">
                         <button class="btn btn-success" type="submit">
-                            Update
+                            <i class="fas fa-arrow-circle-up"></i> Update
                         </button>
                     </div>
                 </div>

@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <div class="text-center">
                         <button class="btn btn-success" type="submit">
-                            Save
+                            <i class="fas fa-save"></i> Save
                         </button>
                     </div>
                 </div>
