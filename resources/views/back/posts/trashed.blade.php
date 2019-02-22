@@ -34,13 +34,13 @@
                       {{ $post->title }}
                   </td>
                   <td>
-                    <a href="{{ route('post.restore', ['id' => $post->id]) }}" class="btn btn-success">
-                        Restore
+                    <a href="{{ route('post.restore', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
+                      <i class="fas fa-redo"></i> Restore
                     </a>
                   </td>
                   <td>
-                    <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-danger">
-                        Delete
+                    <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-danger btn-sm">
+                      <i class="fas fa-trash"></i> Delete
                     </a>
                   </td>
                 </tr>
