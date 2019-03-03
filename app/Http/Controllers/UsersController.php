@@ -8,41 +8,21 @@ use App\User;
 use Session;
 
 
-class UsersController extends Controller
-{
-    public function __construct()
-    {
+class UsersController extends Controller {
+    
+    public function __construct() {
         $this->middleware('admin');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index() {
         return view('back.users.index')->with('users', User::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function create() {
         return view('back.users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $this->validate($request, [
            'name' => 'required',
             'email' => 'required|email'
@@ -64,48 +44,7 @@ class UsersController extends Controller
         return redirect()->route('users');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function admin($id)
-    {
+    public function admin($id) {
         $user = User::find($id);
         $user->admin = 1;
 
@@ -116,8 +55,7 @@ class UsersController extends Controller
         return redirect()->back();
     }
 
-    public function not_admin($id)
-    {
+    public function not_admin($id) {
         $user = User::find($id);
         $user->admin = 0;
 
@@ -128,8 +66,7 @@ class UsersController extends Controller
         return redirect()->back();
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $user = User::find($id);
 
         $user->profile->delete();
