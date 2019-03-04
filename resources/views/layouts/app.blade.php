@@ -104,6 +104,13 @@
                                     <i class="fas fa-file-alt"></i> Posts
                                 </a>
                             </li>
+                            @if(Auth::user()->admin)
+                                <li class="list-group-item">
+                                    <a href="{{ route('settings') }}">
+                                        <i class="fas fa-cogs"></i></i> Settings
+                                    </a>
+                                </li>
+                            @endif
                             <li class="list-group-item">
                                 <a href="{{ route('post.trashed') }}">
                                     <i class="fas fa-trash-alt"></i> Trash
