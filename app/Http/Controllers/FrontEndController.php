@@ -13,6 +13,7 @@ class FrontEndController extends Controller {
         return view('index')
             ->with('title', Setting::first()->site_name)
             ->with('categories', Category::all())   //Category::take(5)->get()
-            ->with('latest', Post::orderBy('created_at', 'desc')->take(3)->get()); 
+            ->with('latest', Post::orderBy('created_at', 'desc')->take(3)->get())
+            ->with('settings', Setting::first()); 
     }
 }
